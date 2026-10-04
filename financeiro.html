@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RBS Financeiro V16</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;background:#f4f6f8;color:#18202a}.top{background:#111827;color:#fff;padding:18px 24px}.wrap{max-width:1200px;margin:auto;padding:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px #0001}.value{font-size:24px;font-weight:700;margin-top:8px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tabs button{padding:10px 14px;border:0;border-radius:8px;background:#e5e7eb;cursor:pointer}.panel{display:none;background:#fff;padding:18px;border-radius:12px}.panel.active{display:block}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid #e5e7eb}.ok{color:#087f5b}.warn{color:#b45309}.bad{color:#b91c1c}
+</style>
+</head>
+<body>
+<div class="top"><strong>RBS — Financeiro V16</strong></div>
+<div class="wrap">
+<div class="grid" id="summary"></div>
+<div class="tabs">
+<button onclick="show('ar')">A Receber</button><button onclick="show('ap')">A Pagar</button><button onclick="show('pay')">Pagamentos</button><button onclick="show('cash')">Caixa</button><button onclick="show('rec')">Recibos</button>
+</div>
+<div id="ar" class="panel active"></div><div id="ap" class="panel"></div><div id="pay" class="panel"></div><div id="cash" class="panel"></div><div id="rec" class="panel"></div>
+</div>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=n=>new Intl.NumberFormat("pt-AO",{style:"currency",currency:"AOA"}).format(Number(n||0));
+async function api(p){const r=await fetch(p,{credentials:"include"});if(r.status===401){location.href="/admin.html";return null}return r.json()}
+function show(id){document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
+function table(headers,rows){return `<table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows||"<tr><td colspan='"+headers.length+"'>Sem registos</td></tr>"}</tbody></table>`}
+async function load(){
+ const [s,ar,ap,pay,cash,rec]=await Promise.all(["summary","receivables","payables","payments","cash","receipts"].map(x=>api("/api/finance/"+x)));
+ if(!s)return;
+ const x=s.summary; document.getElementById("summary").innerHTML=[
+ ["A receber",money(x.receivable)],["A pagar",money(x.payable)],["Recebido",money(x.received)],["Pago",money(x.paid)],["Caixa",money(x.cashBalance)],["Vencido a receber",money(x.overdueReceivable)],["Vencido a pagar",money(x.overduePayable)]
+ ].map(a=>`<div class="card"><small>${a[0]}</small><div class="value">${a[1]}</div></div>`).join("");
+ document.getElementById("ar").innerHTML=table(["Documento","Cliente","Total","Pago","Saldo","Estado"],ar.data.map(r=>`<tr><td>${esc(r.documentNumber||r.id)}</td><td>${esc(r.customerName)}</td><td>${money(r.total)}</td><td>${money(r.paid)}</td><td>${money(r.balance)}</td><td>${esc(r.status)}</td></tr>`).join(""));
+ document.getElementById("ap").innerHTML=table(["Documento","Fornecedor","Total","Pago","Saldo","Estado"],ap.data.map(r=>`<tr><td>${esc(r.documentNumber||r.id)}</td><td>${esc(r.supplierName)}</td><td>${money(r.total)}</td><td>${money(r.paid)}</td><td>${money(r.balance)}</td><td>${esc(r.status)}</td></tr>`).join(""));
+ document.getElementById("pay").innerHTML=table(["Tipo","Referência","Valor","Método","Data"],pay.data.map(r=>`<tr><td>${esc(r.type)}</td><td>${esc(r.referenceId)}</td><td>${money(r.amount)}</td><td>${esc(r.method)}</td><td>${esc(r.date)}</td></tr>`).join(""));
+ document.getElementById("cash").innerHTML=table(["Direção","Descrição","Valor","Método","Data"],cash.data.map(r=>`<tr><td>${esc(r.direction)}</td><td>${esc(r.description)}</td><td>${money(r.amount)}</td><td>${esc(r.method)}</td><td>${esc(r.date)}</td></tr>`).join(""));
+ document.getElementById("rec").innerHTML=table(["Recibo","Cliente","Valor","Método","Data"],rec.data.map(r=>`<tr><td>${esc(r.number)}</td><td>${esc(r.customerName)}</td><td>${money(r.amount)}</td><td>${esc(r.method)}</td><td>${esc(r.date)}</td></tr>`).join(""));
+}
+load();
+</script>
+</body></html>

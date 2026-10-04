@@ -1,0 +1,152 @@
+[
+  {
+    "id": "MOTO-001",
+    "area": "RBS Moto",
+    "category": "Equipamentos",
+    "name": "Equipamentos para mototaxistas",
+    "description": "Linha de equipamentos e acessórios direcionada às necessidades de mototaxistas.",
+    "status": "Sob consulta",
+    "featured": true
+  },
+  {
+    "id": "MOTO-002",
+    "area": "RBS Moto",
+    "category": "Acessórios",
+    "name": "Acessórios para motorizadas",
+    "description": "Soluções e acessórios para motorizadas, conforme necessidade e disponibilidade.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "MOTO-003",
+    "area": "RBS Moto",
+    "category": "Oficina",
+    "name": "Oficina associada",
+    "description": "Serviços e apoio de oficina relacionados à área de motorizadas.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "CONST-001",
+    "area": "RBS Construção",
+    "category": "Materiais",
+    "name": "Materiais e fornecimento para construção",
+    "description": "Fornecimento orientado para profissionais e projetos de construção.",
+    "status": "Sob consulta",
+    "featured": true
+  },
+  {
+    "id": "CONST-002",
+    "area": "RBS Construção",
+    "category": "Ferramentas",
+    "name": "Ferramentas e equipamentos",
+    "description": "Soluções para profissionais de construção, pedreira e manutenção.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "CONST-003",
+    "area": "RBS Construção",
+    "category": "Instalações",
+    "name": "Canalização e eletricidade",
+    "description": "Materiais e soluções relacionadas com instalações de canalização e eletricidade.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "FASH-001",
+    "area": "RBS Fashion",
+    "category": "Vestuário",
+    "name": "Vestuário",
+    "description": "Vestuário para homens, mulheres e crianças.",
+    "status": "Sob consulta",
+    "featured": true
+  },
+  {
+    "id": "FASH-002",
+    "area": "RBS Fashion",
+    "category": "Uniformes",
+    "name": "Uniformes empresariais e escolares",
+    "description": "Uniformes e soluções de vestuário para organizações e instituições.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "FASH-003",
+    "area": "RBS Fashion",
+    "category": "Personalização",
+    "name": "Personalização",
+    "description": "Soluções de personalização integradas com a área de comunicação e gráfica.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "GRAF-001",
+    "area": "RBS Gráfica & Comunicação",
+    "category": "Impressão",
+    "name": "Impressão e timbragem",
+    "description": "Materiais gráficos e documentos empresariais personalizados.",
+    "status": "Sob consulta",
+    "featured": true
+  },
+  {
+    "id": "GRAF-002",
+    "area": "RBS Gráfica & Comunicação",
+    "category": "Marca",
+    "name": "Identidade visual e logotipos",
+    "description": "Criação e desenvolvimento de identidade visual para marcas e negócios.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "GRAF-003",
+    "area": "RBS Gráfica & Comunicação",
+    "category": "Comunicação",
+    "name": "Redes sociais e comunicação",
+    "description": "Apoio à presença e comunicação visual de marcas nos canais digitais.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "DIG-001",
+    "area": "RBS Digital",
+    "category": "Web",
+    "name": "Website empresarial",
+    "description": "Desenvolvimento de presença digital para empresas e projetos.",
+    "status": "Sob consulta",
+    "featured": true
+  },
+  {
+    "id": "DIG-002",
+    "area": "RBS Digital",
+    "category": "Catálogo",
+    "name": "Catálogo digital",
+    "description": "Estrutura digital para apresentação de produtos e serviços.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "DIG-003",
+    "area": "RBS Digital",
+    "category": "Orçamento",
+    "name": "Pedidos de orçamento",
+    "description": "Fluxo digital para receber e encaminhar solicitações comerciais.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "SERV-001",
+    "area": "RBS Prestação de Serviços",
+    "category": "Tecnologia",
+    "name": "Informática e tecnologia",
+    "description": "Serviços técnicos de informática e apoio tecnológico.",
+    "status": "Sob consulta",
+    "featured": true
+  },
+  {
+    "id": "SERV-002",
+    "area": "RBS Prestação de Serviços",
+    "category": "Design",
+    "name": "Design e comunicação",
+    "description": "Serviços profissionais de design e comunicação visual.",
+    "status": "Sob consulta"
+  },
+  {
+    "id": "SERV-003",
+    "area": "RBS Prestação de Serviços",
+    "category": "Manutenção",
+    "name": "Instalação e manutenção",
+    "description": "Serviços técnicos de instalação, manutenção e apoio profissional.",
+    "status": "Sob consulta"
+  }
+]

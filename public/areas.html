@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RBS — Gestão por Áreas V17</title>
+<link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="admin.css">
+<style>
+.v17-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.v17-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px}.v17-card strong{display:block;font-size:1.35rem;margin-top:6px}.area-table{width:100%;border-collapse:collapse}.area-table th,.area-table td{padding:10px;border-bottom:1px solid #eee;text-align:left}.positive{color:#087f5b}.negative{color:#b91c1c}.forms{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}.area-pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#f0f2f5;font-size:.85rem}
+</style>
+</head>
+<body>
+<header class="admin-header"><div class="admin-brand"><img src="assets/logo-rbs.png" alt="RBS"><span>Gestão por Áreas V17</span></div><div><a href="erp.html">ERP</a><a href="admin.html">Painel</a><a href="index.html">Site</a></div></header>
+<main class="admin-wrap">
+<div class="admin-title"><div><span class="eyebrow">GESTÃO EMPRESARIAL</span><h1>Áreas & Centros de Custo</h1><p>Receitas, despesas, resultado e stock por área.</p></div></div>
+<div class="v17-grid" id="totals"></div>
+<section class="panel" style="margin-top:18px"><h2>Resultado por área</h2><div style="overflow:auto"><table class="area-table"><thead><tr><th>Área</th><th>Receitas</th><th>Despesas</th><th>Resultado</th><th>Stock</th><th>Produtos</th></tr></thead><tbody id="areaRows"></tbody></table></div></section>
+<div class="forms" style="margin-top:18px">
+<section class="panel"><h2>Registar receita</h2><form id="entryForm">
+<label>Área<select id="entryArea" required></select></label>
+<label>Centro de custo<select id="entryCC"><option value="">Sem centro de custo</option></select></label>
+<label>Descrição<input id="entryDesc" required maxlength="200"></label>
+<label>Valor (Kz)<input id="entryAmount" type="number" min="0.01" step="0.01" required></label>
+<label>Data<input id="entryDate" type="date"></label>
+<button class="primary">Registar receita</button></form>
+</section>
+<section class="panel"><h2>Registar despesa</h2><form id="expenseForm">
+<label>Área<select id="expenseArea" required></select></label>
+<label>Centro de custo<select id="expenseCC"><option value="">Sem centro de custo</option></select></label>
+<label>Descrição<input id="expenseDesc" required maxlength="200"></label>
+<label>Categoria<input id="expenseCategory" value="Geral" maxlength="100"></label>
+<label>Valor (Kz)<input id="expenseAmount" type="number" min="0.01" step="0.01" required></label>
+<label>Data<input id="expenseDate" type="date"></label>
+<button class="primary">Registar despesa</button></form>
+</section>
+<section class="panel"><h2>Novo centro de custo</h2><form id="ccForm">
+<label>Área<select id="ccArea" required></select></label>
+<label>Código<input id="ccCode" required maxlength="30" placeholder="EX.: ADM-01"></label>
+<label>Nome<input id="ccName" required maxlength="100"></label>
+<label>Descrição<textarea id="ccDesc"></textarea></label>
+<button class="primary">Criar centro de custo</button></form>
+</section>
+</div>
+<section class="panel" style="margin-top:18px"><h2>Centros de custo</h2><div style="overflow:auto"><table class="area-table"><thead><tr><th>Código</th><th>Nome</th><th>Área</th><th>Estado</th></tr></thead><tbody id="ccRows"></tbody></table></div></section>
+<section class="panel" style="margin-top:18px"><h2>Últimas movimentações por área</h2><div style="overflow:auto"><table class="area-table"><thead><tr><th>Tipo</th><th>Área</th><th>Descrição</th><th>Valor</th><th>Data</th></tr></thead><tbody id="movementRows"></tbody></table></div></section>
+<div id="msg" class="notice" style="margin-top:16px"></div>
+</main>
+<script src="areas-v17.js"></script>
+</body></html>

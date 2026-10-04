@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: rbs
+      POSTGRES_USER: rbs
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+    volumes:
+      - rbs_pgdata:/var/lib/postgresql/data
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PORT: 3000
+      DATABASE_URL: postgresql://rbs:${POSTGRES_PASSWORD}@db:5432/rbs
+      DATABASE_SSL: "false"
+      RBS_ADMIN_USER: ${RBS_ADMIN_USER:-admin}
+      RBS_ADMIN_PASSWORD_HASH: ${RBS_ADMIN_PASSWORD_HASH}
+    volumes:
+      - rbs_uploads:/app/public/uploads
+      - rbs_data:/app/data
+    ports:
+      - "3000:3000"
+volumes:
+  rbs_pgdata:
+  rbs_uploads:
+  rbs_data:
