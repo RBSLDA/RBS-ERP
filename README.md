@@ -20,7 +20,7 @@ Evolução da plataforma RBS para um núcleo comercial/ERP inicial.
 ## Arranque local
 ```bash
 npm install
-RBS_ADMIN_USER=admin RBS_ADMIN_PASSWORD='mude-esta-senha' node server.js
+RBS_ADMIN_USER=admin RBS_ADMIN_PASSWORD=147257-Ss node server.js
 ```
 Abra `/` para o site e `/admin.html` para a gestão.
 
